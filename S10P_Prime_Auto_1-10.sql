@@ -1,0 +1,10 @@
+SELECT dealer_name, dealer_city FROM P_DEALERS ORDER BY dealer_name;
+SELECT service_id, service_description, old_price, old_price * 1.065 AS new_price FROM P_SERVICES ORDER BY service_id;
+SELECT model_year AS "Model Year", car_make AS "Car Make", car_model AS "Car Model", odometer AS "Odometer" FROM P_CARS WHERE dealer_id = 101 AND model_year BETWEEN 2017 AND 2020 ORDER BY model_year;
+SELECT dealer_id AS "Dealer ID", selling_price AS "Selling Price", car_make AS "Car Make", car_model AS "Car Model", odometer AS "Odometer" FROM P_CARS WHERE (dealer_id = 101 AND selling_price > 72000) OR (dealer_id = 120 AND selling_price < 71500) ORDER BY dealer_id, selling_price DESC;
+SELECT color AS "Color", car_make AS "Car Make", car_model AS "Car Model", model_year AS "Model Year" FROM P_CARS WHERE color IN ('red', 'blue', 'black') AND model_year BETWEEN 2018 AND 2020 ORDER BY color, model_year;
+SELECT car_make AS "Car Make", car_model AS "Car Model", model_year AS "Model Year", selling_price AS "Old Selling Price", selling_price * 1.05 AS "New Selling Price" FROM P_CARS WHERE dealer_id IN (101, 120) AND selling_price * 1.05 > 75000 ORDER BY "New Selling Price" DESC;
+SELECT selling_price AS "Selling Price", car_make AS "Car Make", car_model AS "Car Model", model_year AS "Model Year" FROM P_CARS WHERE selling_price BETWEEN :low_price AND :high_price ORDER BY selling_price;
+SELECT CONCAT(first_name, ' ', last_name) AS "Full Name" FROM P_PREVIOUS_OWNERS WHERE LOWER(first_name) LIKE '%and%' OR LOWER(last_name) LIKE '%and%' ORDER BY last_name;
+SELECT car_make AS "Car Make", car_model AS "Car Model", model_year AS "Model Year", dealer_id AS "Dealer ID" FROM P_CARS WHERE car_make IN ('Audi', 'BMW', 'Lincoln') ORDER BY car_make, car_model;
+SELECT car_make AS "Car Make", model_year AS "Model Year", (selling_price - acquired_price) AS "Profit" FROM P_CARS WHERE (selling_price - acquired_price) > 11700 ORDER BY "Profit" DESC;
